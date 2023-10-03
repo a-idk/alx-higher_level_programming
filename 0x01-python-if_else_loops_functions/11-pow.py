@@ -5,6 +5,6 @@
 power of b'''
 
 
-def add(a,b):
+def pow(a, b):
     result = a ** b
     return (result)

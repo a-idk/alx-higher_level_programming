@@ -6,16 +6,16 @@ separated by a space.'''
 
 
 def fizzbuzz():
-     for num in range(1, 101):
-         # for multiples of both three and five print FizzBuzz
-         if num % 3 == 0 and num % 5 == 0:
+    for num in range(1, 101):
+        # for multiples of both three and five print FizzBuzz
+        if num % 3 == 0 and num % 5 == 0:
             print("FizzBuzz ", end="")
-        # For multiples of three print Fizz
+            # For multiples of three print Fizz
         elif num % 3 == 0:
             print("Fizz ", end="")
-        # for multiples of five print Buzz
+            # for multiples of five print Buzz
         elif num % 5 == 0:
             print("Buzz ", end="")
-        # skip
+            # skip
         else:
             print("{} ".format(num), end="")
