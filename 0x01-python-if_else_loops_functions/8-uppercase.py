@@ -2,7 +2,7 @@
 
 # @a_idk scripting
 
-''' function that prints the uppercase
+''' function that outputs the uppercase
 character'''
 
 
