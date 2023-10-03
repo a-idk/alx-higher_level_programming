@@ -10,3 +10,5 @@ def magic_calculation(a, b, c):
         return (c)
     if c > b:
         return (a + b)
+    else:
+        return (a * b - c)
