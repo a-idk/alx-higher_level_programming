@@ -2,6 +2,10 @@
 import random
 number = random.randint(-10000, 10000)
 d = number % 10
+
+if number < 0:
+    d = d * (-1)
+
 if d > 5:
     print("Last digit of {} is {} and is greater than 5".format(number, d))
 elif d == 0:
