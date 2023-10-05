@@ -7,7 +7,7 @@
 if __name__ == "__main__":
 
     import sys
-    from calculator_1 import add, sub, mul, div 
+    from calculator_1 import add, sub, mul, div
 
     # If the number of arguments is not 3
     if (len(sys.argv) - 1) != 3:
