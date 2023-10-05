@@ -2,12 +2,12 @@
 # @a_idk scripting
 
 if __name__ == "__main__":
-    
+
     import sys
 
     # counting the number of arguments
     num = len(sys.argv) - 1
-    
+
     # conditions
     if num == 0:
         print("0 arguments.")
