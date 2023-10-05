@@ -6,7 +6,7 @@
 does some Maths, and prints the result.'''
 
 if __name__ == "__main__":
-    from calculator_1 import add, div, sub, mul
+    from calculator_1 import add, sub, mul, div
 
     # defining and initializing variables
     a = 10
