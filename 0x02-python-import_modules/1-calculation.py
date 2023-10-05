@@ -12,8 +12,14 @@ if __name__ == "__main__":
     a = 10
     b = 5
 
-    # mathematical calculations
-    print("{} + {} = {}".format(a, b, add(a, b)))
-    print("{} - {} = {}".format(a, b, sub(a, b)))
-    print("{} * {} = {}".format(a, b, mul(a, b)))
-    print("{} / {} = {}".format(a, b, div(a, b)))
+    # mathematical computations
+    summer = add(a, b)
+    subtracter = sub(a, b)
+    multiplier = mul(a, b)
+    divider = div(a, b)
+
+    # output displays
+    print(f"{a} + {b} = {summer}")
+    print(f"{a} - {b} = {subtracter}")
+    print(f"{a} * {b} = {multiplier}")
+    print(f"{a} / {b} = {divider}")
