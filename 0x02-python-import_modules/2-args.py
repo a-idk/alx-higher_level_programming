@@ -19,4 +19,3 @@ if __name__ == "__main__":
     # printing the respective arguments
     for x in range(num):
         print(f"{x + 1}: {sys.argv[x + 1]}")
-        # print("{}: {}".format(x + 1, sys.argv[x + 1]))
