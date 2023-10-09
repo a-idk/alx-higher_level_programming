@@ -45,7 +45,7 @@ int is_palindrome(listint_t **start)
 	size_t idx;
 
 	/* checking for NULL value */
-	if (((*start)->next == NULL) || (*start == NULL))
+	if ((*start == NULL) || ((*start)->next == NULL))
 		return (1);
 
 	/* for temp */
@@ -54,7 +54,7 @@ int is_palindrome(listint_t **start)
 		size += 1, temp = temp->next;
 
 	temp = *start;
-	for (idx = 0; (idx < (size / 2) - 1); idx += 1)
+	for (idx = 0; (idx < (size / 2)); idx += 1)
 		temp = temp->next;
 	if ((temp->n != temp->next->n) && ((size % 2) == 0))
 		return (0);
