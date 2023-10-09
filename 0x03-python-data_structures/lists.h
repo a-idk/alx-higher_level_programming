@@ -22,7 +22,7 @@ typedef struct listint_s
 size_t print_listint(const listint_t *h);
 listint_t *add_nodeint_end(listint_t **head, const int n);
 void free_listint(listint_t *head);
-listint_t *reverse_list_int(listint_t **head);
-int is_palindrome(listint_t **head);
+listint_t *reverse_list_int(listint_t **start);
+int is_palindrome(listint_t **start);
 
 #endif /* LISTS_H */
