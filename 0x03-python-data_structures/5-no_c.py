@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # @a_idk scripting
 
-#function that removes all characters c and C from a string.
+# function that removes all characters c and C from a string.
 
 
 def no_c(my_string):
