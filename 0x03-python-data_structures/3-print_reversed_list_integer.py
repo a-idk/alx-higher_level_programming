@@ -5,8 +5,12 @@
 
 
 def print_reversed_list_integer(my_list=[]):
-    my_list.reverse()
+#    my_list.reverse()
 #    for idx in range(len(my_list) - 1, -1, -1):
 #        print("{:d}".format(my_list[idx]))
-    for idx in my_list:
-        print("{:d}".format(idx))
+#    for idx in my_list:
+#        print("{:d}".format(idx))
+     if isinstance(my_list, list):
+        my_list.reverse()
+        for idx in my_list:
+            print("{:d}".format(idx))
