@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# @a_idk scripting 
+# @a_idk scripting
 
 # function that returns a set of common elements in two sets
 

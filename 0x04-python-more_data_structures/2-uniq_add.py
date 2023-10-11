@@ -10,7 +10,7 @@ def uniq_add(my_list=[]):
     summed = 0
     lst = set(my_list)
 
-    # populating the 
+    # populating the list
     for idx in lst:
         summed = summed + idx
     return (summed)
