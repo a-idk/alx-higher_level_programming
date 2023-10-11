@@ -10,5 +10,5 @@ def number_keys(a_dictionary):
     keys_num = 0
     # counting the keys
     for x in key_lst:
-        keys_num++
+        keys_num = keys_num + 1
     return (keys_num)
