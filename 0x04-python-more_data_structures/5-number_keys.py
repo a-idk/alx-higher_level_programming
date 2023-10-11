@@ -1,8 +1,13 @@
 #!/usr/bin/python3
-def number_keys(a_dictionary):
+# @a_idk scripting
 
-    key_num = 0
+# function that returns the number of keys in a dictionary.
+
+
+def number_keys(a_dictionary):
+    # initializing the numbering
     keys_lst = list(a_dictionary.keys())
+    key_num = 0
 
     for x in keys_lst:
         key_num = key_num + 1
