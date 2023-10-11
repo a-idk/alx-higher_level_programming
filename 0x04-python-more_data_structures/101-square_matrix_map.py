@@ -1,9 +1,3 @@
 #!/usr/bin/python3
-# @a_idk scripting
-
-# function that computes the square value of all integers of a
-# matrix using map
-
-
-def square_matrix_map(matrix=[]):
+def square_matrix_map(matrix=[]):  # function that del keys
     return (list(map(lambda i: list(map(lambda j: j**2, i)), matrix)))
