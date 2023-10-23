@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-import sys
+# import sys
 
 '''
 function that does exactly the same as the following Python bytecode
