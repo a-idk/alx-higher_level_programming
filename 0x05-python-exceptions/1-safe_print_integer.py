@@ -12,7 +12,7 @@ def safe_print_integer(value):
         print("{:d}".format(get_input))  # Required print format
         # print()  # Newline print
         return (True)
-    except (TypeError):
-        return (False)
-    except (TypeError):
+#    except (TypeError):
+#        return (False)
+    except (ValueError):
         return (False)
