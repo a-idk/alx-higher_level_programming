@@ -19,4 +19,4 @@ def magic_calculation(a, b):
         except Exception:
             outcome = a + b
             break
-        return (outcome)
+        return int(outcome)
