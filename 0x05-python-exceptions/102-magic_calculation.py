@@ -10,7 +10,7 @@ function that does exactly the same as the following Python bytecode
 def magic_calculation(a, b):
     # initializing the outcome/result
     outcome = 0
-    for x in range(1, 4):
+    for x in range(1, 3):
         try:
             if a < x:
                 raise Exception('Too far')
