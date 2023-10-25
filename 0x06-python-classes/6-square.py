@@ -8,7 +8,7 @@ a class Square that defines a square by: (based on 4-square.py)
 
 
 class Square:
-
+    """Class definition"""
     def __init__(self, size=0, position=(0, 0)):  # initializing
         '''
         @size: private attribute (size of square)
@@ -19,10 +19,12 @@ class Square:
 
     @property
     def size(self):
+        """getter"""
         return (self.__size)
 
     @size.setter
     def size(self, value):
+        """setter"""
         # raising exceptions
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
@@ -32,10 +34,12 @@ class Square:
 
     @property
     def position(self):
+        """getter"""
         return (self.__position)
 
     @position.setter
     def position(self, value):
+        """setter"""
         if (not isinstance(value, tuple) or len(value) != 2 or
                 not all(isinstance(num, int) for num in value) or
                 not all(num >= 0 for num in value)):
@@ -43,14 +47,15 @@ class Square:
         self.__position = value
 
     def area(self):
-        # returning area of square
-        return (self.__size ** 2)
+        """returning area of square"""
+        return (self.__size**2)
 
     def my_print(self):
+        """handling prints"""
         if self.__size == 0:
             print("")
             return
-        [print("") for x in range(0, self.__position[1])]
+        [print("") for i in range(0, self.__position[1])]
         for x in range(0, self.__size):
             [print(" ", end="") for y in range(0, self.__position[0])]
             [print("#", end="") for z in range(0, self.__size)]
