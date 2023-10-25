@@ -20,7 +20,7 @@ a class Square that defines a square by: (based on 4-square.py)
 
 
 class Square:
-
+    '''class definition'''
     def __init__(self, size=0):  # initializing the class Square
         '''
         @size: private attribute (size of square)
@@ -30,10 +30,12 @@ class Square:
 
     @property
     def size(self):
+        '''getter'''
         return (self.__size)
 
     @size.setter
     def size(self, value):
+        '''setter'''
         # raising exceptions
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
@@ -42,10 +44,11 @@ class Square:
         self.__size = value
 
     def area(self):
-        # returning area of square
+        '''returning area of square'''
         return (self.__size * self.__size)
 
     def my_print(self):
+        '''handle print'''
         for x in range(self.size):
             for y in range(self.size):
                 print("#", end="\n" if y is self.size - 1 and x != y else "")

@@ -15,7 +15,7 @@ a class Square that defines a square by: (based on 1-square.py)
 
 
 class Square:
-
+    '''class definition'''
     def __init__(self, size=0):  # initializing the class Square
         '''
         @size: private attribute (size of square)

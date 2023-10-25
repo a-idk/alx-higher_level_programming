@@ -61,12 +61,3 @@ class Square:
             [print("#", end="") for z in range(0, self.__size)]
             # print new line
             print("")
-
-
-
-
-
-
-
-
-

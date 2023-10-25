@@ -10,7 +10,7 @@ a class Square that defines a square by: (based on 0-square.py)
 
 
 class Square:
-
+    '''class definition'''
     def __init__(self, size):  # initializing the class Square
         # @size: private attribute (size of square)
         self.__size = size
