@@ -10,19 +10,19 @@ Python bytecode
 
 class MagicClass:
     """ MagicClass definition """
-    def __init__(self, rad=0):
+    def __init__(self, radius=0):
         """ Initializing the class """
-        self.__rad = 0
+        self.__radius = 0
         ''' handling exception '''
-        if not isinstance(rad, int) and not isinstance(rad, float):
+        if not isinstance(radius, int) and not isinstance(radius, float):
             raise TypeError("radius must be a number")
         else:
-            self.__rad = rad
+            self.__radius = radius
 
     def circumference(self):
         """ calculates circumference of circle """
-        return (math.pi * self.__rad * 2)
+        return (math.pi * self.__radius * 2)
     
     def area(self):
         """ Calculates Area of Circle """
-        return (math.pi * self.__rad ** 2)
+        return (math.pi * self.__radius ** 2)
