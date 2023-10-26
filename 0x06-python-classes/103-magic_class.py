@@ -7,6 +7,7 @@ Python bytecode
 @a_idk scripting
 '''
 
+
 # define class MagicClass
 class MagicClass:
     ''' MagicClass definition '''
