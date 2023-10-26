@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 
-import math
-
 '''
 Python class MagicClass that does exactly the same as the following
 Python bytecode
 @a_idk scripting
 '''
+
+import math
 
 
 class MagicClass:
