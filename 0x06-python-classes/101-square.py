@@ -1,0 +1,71 @@
+#!/usr/bin/python3
+
+'''
+a class Square that defines a square by: (based on 6-square.py)
+
+@a_idk scripting
+'''
+
+
+class Square:
+    """Class Square definition"""
+    def __init__(self, size=0, position=(0, 0)):
+        ''' Initializing the class '''
+        self.size = size
+        self.position = position
+
+    @property
+    def size(self):
+        """getter"""
+        return (self.__size)
+
+    @size.setter
+    def size(self, value):
+        """setter"""
+        # raising exceptions
+        if not isinstance(value, int):
+            raise TypeError("size must be an integer")
+        elif value < 0:
+            raise ValueError("size must be >= 0")
+        self.__size = value
+
+    @property
+    def position(self):
+        """getter"""
+        return (self.__position)
+
+    @position.setter
+    def position(self, value):
+        """setter"""
+        if (not isinstance(value, tuple) or len(value) != 2 or
+                not all(isinstance(num, int) for num in value) or
+                not all(num >= 0 for num in value)):
+            raise TypeError("position must be a tuple of 2 positive integers")
+        self.__position = value
+
+    def area(self):
+        """returning area of square"""
+        return (self.__size**2)
+
+    def my_print(self):
+        """handling prints"""
+        if self.__size == 0:
+            print("")
+            return
+        [print("") for i in range(0, self.__position[1])]
+        for x in range(0, self.__size):
+            [print(" ", end="") for y in range(0, self.__position[0])]
+            [print("#", end="") for z in range(0, self.__size)]
+            # print new line
+            print("")
+
+    def __str__(self):
+        """ square offsetting (#) """
+        if self.__size == 0:
+            return ('')
+        new_lines = '\n' * self.position[1]
+        space = ' ' * self.position[0]
+        hashe = '#' * self.size
+        square_rows = [space + hashe for x in range(self.size)]
+        square_string = new_lines + '\n'.join(square_rows)
+        return (square_string)
