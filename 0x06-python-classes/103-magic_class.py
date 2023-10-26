@@ -2,6 +2,12 @@
 
 import math
 
+'''
+Python class MagicClass that does exactly the same as the following
+Python bytecode
+@a_idk scripting
+'''
+
 
 class MagicClass:
     '''
