@@ -7,11 +7,11 @@ Python bytecode
 @a_idk scripting
 '''
 
-
+# define class MagicClass
 class MagicClass:
-    """ MagicClass definition """
+    ''' MagicClass definition '''
     def __init__(self, radius=0):
-        """ Initializing the class """
+        ''' Initializing the class '''
         self.__radius = 0
         ''' handling exception '''
         if type(radius) is not int and type(radius) is not float:
@@ -19,9 +19,9 @@ class MagicClass:
         self.__radius = radius
 
     def area(self):
-        """ Calculates Area of Circle """
+        ''' Calculates Area of Circle '''
         return (math.pi * self.__radius ** 2)
 
     def circumference(self):
-        """ calculates circumference of circle """
+        ''' calculates circumference of circle '''
         return (math.pi * self.__radius * 2)
