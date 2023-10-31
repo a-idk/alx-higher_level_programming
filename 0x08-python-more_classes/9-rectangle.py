@@ -131,7 +131,8 @@ class Rectangle:
         Returns new Rectangle with width == height == size
 
         Args:
-            size (int): size of the new Rectangle.
+            cls (class): the class itself
+            size (int): size of the new Rectangle
         """
         return cls(size, size)
 
