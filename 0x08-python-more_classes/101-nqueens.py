@@ -29,7 +29,7 @@ def board_dcopy(chess_board):
         chess_board: The chess board
     """
     if isinstance(chess_board, list):
-        return list(map(board_dcopy, board))
+        return list(map(board_dcopy, chess_board))
     return chess_board
 
 
