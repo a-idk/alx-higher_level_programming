@@ -1,0 +1,89 @@
+The ``4-Print square`` module
+======================
+
+Usage:  prints a square with the character #
+--------------------------------------------
+This defines a function in python that  prints a square with the character "#"
+
+importing the function
+>>> print_square = __import__('4-print_square').print_square
+
+Checking for missing arg:
+>>> print_square()
+Traceback (most recent call last):
+...
+TypeError: print_square() missing 1 required positional argument: 'size'
+
+Checking for print 0:
+>>> print_square(0)
+
+Checking for print 1:
+>>> print_square(1)
+#
+
+Checking for print 2:
+>>> print_square(2)
+##
+##
+
+Checking for print print 3:
+>>> print_square(3)
+###
+###
+###
+
+Checking for print 4:
+>>> print_square(4)
+####
+####
+####
+####
+
+Test normal print 10:
+>>> print_square(10)
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+
+checking for float arg value:
+>>> print_square(6.0)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+checking for negative arg:
+>>> print_square(-6)
+Traceback (most recent call last):
+...
+ValueError: size must be >= 0
+
+Checking for str:
+>>> print_square("string")
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+Checking for none:
+>>> print_square(None)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+Checking for nan:
+>>> print_square(float('nan'))
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+Checking for inf:
+>>> print_square(float('inf'))
+Traceback (most recent call last):
+...
+TypeError: size must be an integer

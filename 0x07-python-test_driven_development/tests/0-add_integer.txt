@@ -1,0 +1,83 @@
+The ``0-add_integer`` module
+======================
+
+Usage: ``adds`` 2 integers
+--------------------------
+This defines a function in python that adds two integers
+
+importing the function
+
+>>> add_integer = __import__('0-add_integer').add_integer
+
+Checking positive integers values
+>>> add_integer(1, 2)
+3
+
+Checking negative value
+>>> add_integer(100, -2)
+98
+
+Checking the floats value
+>>> add_integer(1.0, 2.0)
+3
+
+Checking int a value
+>>> add_integer(2)
+100
+
+Checking float and int value
+>>> add_integer(100.3, -2)
+98
+
+Checking wrong type values 
+>>> add_integer(None)
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
+>>> add_integer(4, "School")
+Traceback (most recent call last):
+...
+TypeError: b must be an integer
+
+>>> add_integer("School", 7)
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
+>>> add_integer(4, None)
+Traceback (most recent call last):
+...
+TypeError: b must be an integer
+
+Checking no argument condition
+>>> add_integer()
+Traceback (most recent call last):
+...
+TypeError: add_integer() missing 1 required positional argument: 'a'
+
+>>> add_integer(float("NaN"), 8)
+Traceback (most recent call last):
+...
+ValueError: cannot convert float NaN to integer
+
+Checking very large number argument
+>>> add_integer(float("inf"), 2)
+Traceback (most recent call last):
+...
+OverflowError: cannot convert float infinity to integer
+
+>>> add_integer(2, float("inf"))
+Traceback (most recent call last):
+...
+OverflowError: cannot convert float infinity to integer
+
+>>> add_integer(float("-inf"), 98)
+Traceback (most recent call last):
+...
+OverflowError: cannot convert float infinity to integer
+
+>>> add_integer(6, float("-inf"))
+Traceback (most recent call last):
+...
+OverflowError: cannot convert float infinity to integer
