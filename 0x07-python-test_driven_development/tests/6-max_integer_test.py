@@ -84,15 +84,15 @@ class TestMaxInteger(unittest.TestCase):
         """
         Checks input for a string
         """
-        strg = "Dave"
-        self.assertEqual(max_integer(string), 'r')
+        string = "Dave"
+        self.assertEqual(max_integer(string), 'v')
 
     def test_list_of_strings(self):
         """
         Checks input list for strings
         """
-        strg = ["Dave", "is", "a", "boy"]
-        self.assertEqual(max_integer(strg), "boy")
+        strings = ["Dave", "is", "a", "boy"]
+        self.assertEqual(max_integer(strings), "is")
 
 
 if __name__ == '__main__':
