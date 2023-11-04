@@ -22,19 +22,19 @@ def matrix_divided(matrix, div):
     if div is 0:
         raise ZeroDivisionError("division by zero")
     if not isinstance(matrix, list):
-        raise TypeError("matrix must be a\
-            matrix (list of lists) of integers/floats")
+        raise TypeError("matrix must be a \
+                matrix (list of lists) of integers/floats")
     if type(div) not in [int, float]:
         raise TypeError("div must be a number")
 
     if len(matrix) is 0:
-        raise TypeError("matrix must be a\
-            matrix (list of lists) of integers/floats")
+        raise TypeError("matrix must be a \
+                matrix (list of lists) of integers/floats")
     elif len(matrix) is 1:
         for x in matrix[0]:
             if type(x) not in [int, float]:
-                raise TypeError("matrix must be a\
-                    matrix (list of lists) of integers/floats")
+                raise TypeError("matrix must be a \
+                        matrix (list of lists) of integers/floats")
             tmp.append(float("{:.2f}".format(x / div)))
         matrix_new.append(tmp)
         return matrix_new
