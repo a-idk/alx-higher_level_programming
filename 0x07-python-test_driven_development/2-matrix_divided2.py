@@ -42,15 +42,15 @@ def matrix_divided(matrix, div):
         length = len(matrix[0])
         for i in matrix:
             if not isinstance(i, list):
-                raise TypeError("matrix must be a \
-                        matrix (list of lists) of integers/floats")
+                raise TypeError("matrix must be a\
+                    matrix (list of lists) of integers/floats")
             if len(i) != length:
                 raise TypeError("Each row of the matrix \
                         must have the same size")
             for n in i:
                 if type(n) not in [int, float]:
-                    raise TypeError("matrix must be a \
-                            matrix (list of lists) of integers/floats")
+                    raise TypeError("matrix must be a\
+                        matrix (list of lists) of integers/floats")
                 tmp.append(float("{:.2f}".format(n / div)))
             matrix_new.append(tmp)
             tmp = []
