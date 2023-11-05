@@ -17,49 +17,32 @@ def matrix_divided(matrix, div):
                 matrix contains rows of different sizes.
         ZeroDivisionError: the value of div is 0 (div == 0)
     """
-    matrix_new = []  # initializing list
-    tmp = []
-    if div is 0:
-        raise ZeroDivisionError("division by zero")
-    if not isinstance(matrix, list):
-        raise TypeError("matrix must be a \
-                matrix (list of lists) of integers/floats")
-    if type(div) not in [int, float]:
+    matrix_new = []
+    if not isinstance(div, (int, float)):
         raise TypeError("div must be a number")
+    if not isinstance(matrix, list) or len(matrix) == 0:
+        raise TypeError("matrix must be a matrix (list of lists) " +
+                        "of integers/floats")
+    for idx in matrix:
+        if not isinstance(idx, list) or len(idx) == 0:
+            raise TypeError("matrix must be a matrix (list of lists) " +
+                            "of integers/floats")
+        if len(idx) != len(matrix[0]):
+            raise TypeError("Each row of the matrix must have the same size")
+        for x in idx:
+            if not isinstance(x, (int, float)):
+                raise TypeError("matrix must be a matrix (list of lists) " +
+                                "of integers/floats")
+    for i in matrix:
+        new_row = []
+        for x in i:
+            # Perform the division and rounding
+            result = round(x / div, 2)
+            new_row.append(result)
+        matrix_new.append(new_row)
+    return matrix_new
 
-    if len(matrix) is 0:
-        raise TypeError(
-                "matrix must be a matrix (list of lists) of integers/floats"
-                )
-    elif len(matrix) is 1:
-        for x in matrix[0]:
-            if type(x) not in [int, float]:
-                raise TypeError(
-                        """matrix must be a matrix (list of lists) of
-                        integers/floats"""
-                        )
-            tmp.append(float("{:.2f}".format(x / div)))
-        matrix_new.append(tmp)
-        return matrix_new
-    else:
-        length = len(matrix[0])
-        for i in matrix:
-            if not isinstance(i, list):
-                raise TypeError(
-                        """matrix must be a matrix (list of lists) of
-                        integers/floats"""
-                        )
-            if len(i) != length:
-                raise TypeError(
-                        "Each row of the matrix must have the same size"
-                        )
-            for n in i:
-                if type(n) not in [int, float]:
-                    raise TypeError(
-                            """matrix must be a matrix (list of lists)
-                            of integers/floats"""
-                            )
-                tmp.append(float("{:.2f}".format(n / div)))
-            matrix_new.append(tmp)
-            tmp = []
-        return (matrix_new)
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testfile("tests/2-matrix_divided.txt")
