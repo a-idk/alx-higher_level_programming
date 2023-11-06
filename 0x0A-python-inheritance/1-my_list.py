@@ -10,9 +10,10 @@ class MyList(list):
     """
     Class myList definition
     """
+    pass
     def print_sorted(self):
         """
         Method that prints the list, but sorted
         (Ascending order)
         """
-        print(sorted(self))
+        print(sorted(list(self)))
