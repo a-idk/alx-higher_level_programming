@@ -7,30 +7,39 @@ This defines a function in python that does integer validation
 =============================================================================
 Importing class from module:
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+
 =============================================================================
 Case 0: Chcking for correct class type
 =============================================================================
 >>> base_geo = BaseGeometry()
 >>> type(base_geo) == BaseGeometry
 True
+
+
 =============================================================================
 Case 1: Checking for integer validator instance
 =============================================================================
 :: - 1 (checking for ok value)
 >>> base_geo.integer_validator("key", 23)
+
     
 :: - 2 (checking for ok value 2)
 >>> base_geo.integer_validator("key", 3)
 
+
 :: - 3 (checking for empty string)
 >>> base_geo.integer_validator("", 2)
+
 
 :: - 4 (checking for empty string)
 >>> base_geo.integer_validator(None, 3)
 
+
 :: - 5 (is an instance)
 >>> type(BaseGeometry.__dict__['integer_validator'])
 <class 'function'>
+
 
 :: - 6 (called via class with no args)
 >>> base_geo.__class__.integer_validator()
@@ -38,11 +47,13 @@ Traceback (most recent call last):
     ...
 TypeError: integer_validator() missing 3 required positional arguments: 'self', 'name', and 'value'
 
+
 :: - 7 (checking 0 args):
 >>> base_geo.integer_validator()
 Traceback (most recent call last):
     ...
 TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
     
 :: - 8 (checking 3 args)
 >>> base_geo.integer_validator(5, 5, 5)
@@ -50,11 +61,13 @@ Traceback (most recent call last):
     ...
 TypeError: integer_validator() takes 3 positional arguments but 4 were given
 
+
 :: - 9 (checking for float.0 value)
 >>> base_geo.integer_validator("Hello", 2.0)
 Traceback (most recent call last):
     ...
 TypeError: Hello must be an integer
+
 
 :: - 10 (checking for float.x value)
 >>> base_geo.integer_validator("arg", 2.34)
@@ -62,11 +75,13 @@ Traceback (most recent call last):
     ...
 TypeError: arg must be an integer
 
+
 :: - 11 (checking for string value)
 >>> base_geo.integer_validator("Hello", "Hello")
 Traceback (most recent call last):
     ...
 TypeError: Hello must be an integer
+
 
 :: - 12 (checking for bool value)
 >>> base_geo.integer_validator("idk", True)
@@ -74,11 +89,13 @@ Traceback (most recent call last):
     ...
 TypeError: idk must be an integer
 
+
 :: - 13 ( checking for list value)
 >>> base_geo.integer_validator("a", [7])
 Traceback (most recent call last):
     ...
 TypeError: a must be an integer
+
 
 :: - 14 (checking for None value)
 >>> base_geo.integer_validator("Hello", None)
@@ -86,11 +103,13 @@ Traceback (most recent call last):
     ...
 TypeError: Hello must be an integer
 
+
 :: - 15 (checking for tuple)
 >>> base_geo.integer_validator("Hello", (3, 5))
 Traceback (most recent call last):
     ...
 TypeError: Hello must be an integer
+
 
 :: - 16 (checking for dic)
 >>> base_geo.integer_validator("Hello", {5, 3})
@@ -98,17 +117,21 @@ Traceback (most recent call last):
     ...
 TypeError: Hello must be an integer
 
+
 :: - 17 (Checking for 0 value)
 >>> base_geo.integer_validator("key", 0)
 Traceback (most recent call last):
     ...
 ValueError: key must be greater than 0
 
+
 :: - 18 (checking for -ve value)
 >>> base_geo.integer_validator("key", -5)
 Traceback (most recent call last):
     ...
 ValueError: key must be greater than 0
+
+
 =============================================================================
 Case 2: checking for area() instance method
 =============================================================================
@@ -118,9 +141,11 @@ Traceback (most recent call last):
     ...
 Exception: area() is not implemented
 
+
 :: - 1
 >>> type(BaseGeometry.__dict__['area'])
 <class 'function'>
+
 
 :: - 2 (class with no arguments)
 >>> base_geo.__class__.area()
@@ -128,9 +153,9 @@ Traceback (most recent call last):
     ...
 TypeError: area() missing 1 required positional argument: 'self'
 
+
 :: - 3 (1 argument)
 >>> base_geo.area(5)
 Traceback (most recent call last):
     ...
 TypeError: area() takes 1 positional argument but 2 were given
-=============================================================================
