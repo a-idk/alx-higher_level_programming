@@ -57,28 +57,65 @@ Case 7: Checking for missing positional argument
 
 >>> d_list.__class__.print_sorted()
 Traceback (most recent call last):
-        ...
+    ...
 TypeError: print_sorted() missing 1 required positional argument: 'self'
 ===============================================================================
 Case 8: Checking for more than 1 positional argument
 >>> d_list.print_sorted([3, 2, 4])
 Traceback (most recent call last):
-        ...
+    ...
 TypeError: print_sorted() takes 1 positional argument but 2 were given
 ===============================================================================
 Case 9: Checking for 2 positional arguments
 >>> d_list.print_sorted([3, 2, 4], 5)
 Traceback (most recent call last):
-        ...
+    ...
 TypeError: print_sorted() takes 1 positional argument but 3 were given
 ===============================================================================
-Case 10: Checking for Empty list
+Case 10: Checking for Null and None Value
+>>> d_list.append(NULL)
+Traceback (most recent call last):
+    ...
+NameError: name 'NULL' is not defined
+
+>>> d_list.append(None)
+>>> d_list.print_sorted()
+Traceback (most recent call last):
+    ...
+TypeError: unorderable types: NoneType() < int()
+===============================================================================
+Case 11: Checking for Empty list
 >>> d_list = MyList()
 >>> d_list.print_sorted()
 []
 ===============================================================================
-Case 11: Checking for working append function
+Case 12: Checking for working append function
 >>> d_list = MyList()
 >>> d_list.append(9)
 >>> d_list
 [9]
+===============================================================================
+Case 13: Checking for infinite integer
+>>> d_list.append(int('inf'))
+Traceback (most recent call last):
+    ...
+ValueError: invalid literal for int() with base 10: 'inf'
+===============================================================================
+Case 14: Checking for repeated element
+>>> d_list = MyList()
+>>> d_list.append(9)
+>>> d_list.append(-5)
+>>> d_list.append(-5)
+>>> d_list.append(0)
+>>> d_list.append(7)
+>>> d_list.append(7)
+>>> d_list.print_sorted()
+[-5, -5, 0, 7, 7, 9]
+===============================================================================
+Case 15: Checking for similar elements
+>>> d_list.clear()
+>>> d_list.append(9)
+>>> d_list.append(9)
+>>> d_list.append(9)
+>>> d_list.print_sorted()
+[9, 9, 9]
