@@ -57,32 +57,30 @@ Case 7: Checking for missing positional argument
 
 >>> d_list.__class__.print_sorted()
 Traceback (most recent call last):
-    ...
+  File "<stdin>", line 1, in <module>
 TypeError: print_sorted() missing 1 required positional argument: 'self'
 ===============================================================================
 Case 8: Checking for more than 1 positional argument
 >>> d_list.print_sorted([3, 2, 4])
 Traceback (most recent call last):
-    ...
+  File "<stdin>", line 1, in <module>
 TypeError: print_sorted() takes 1 positional argument but 2 were given
 ===============================================================================
 Case 9: Checking for 2 positional arguments
 >>> d_list.print_sorted([3, 2, 4], 5)
 Traceback (most recent call last):
-    ...
+  File "<stdin>", line 1, in <module>
 TypeError: print_sorted() takes 1 positional argument but 3 were given
 ===============================================================================
 Case 10: Checking for Null and None Value
 >>> d_list.append(NULL)
 Traceback (most recent call last):
-    ...
+  File "<stdin>", line 1, in <module>
 NameError: name 'NULL' is not defined
 
 >>> d_list.append(None)
 >>> d_list.print_sorted()
-Traceback (most recent call last):
-    ...
-TypeError: unorderable types: NoneType() < int()
+[None]
 ===============================================================================
 Case 11: Checking for Empty list
 >>> d_list = MyList()
@@ -98,7 +96,7 @@ Case 12: Checking for working append function
 Case 13: Checking for infinite integer
 >>> d_list.append(int('inf'))
 Traceback (most recent call last):
-    ...
+  File "<stdin>", line 1, in <module>
 ValueError: invalid literal for int() with base 10: 'inf'
 ===============================================================================
 Case 14: Checking for repeated element
@@ -119,3 +117,10 @@ Case 15: Checking for similar elements
 >>> d_list.append(9)
 >>> d_list.print_sorted()
 [9, 9, 9]
+===============================================================================
+case 16: parent object
+>>> d_list = [1, 2, 3]
+>>> d_list.print_sorted()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'list' object has no attribute 'print_sorted'
