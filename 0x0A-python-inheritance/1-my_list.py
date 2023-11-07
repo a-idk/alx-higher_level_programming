@@ -17,8 +17,3 @@ class MyList(list):
         (Ascending order)
         """
         print(sorted(self))
-
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()
