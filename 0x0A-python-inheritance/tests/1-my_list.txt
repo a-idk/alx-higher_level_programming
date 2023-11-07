@@ -14,63 +14,86 @@ importing the function
 Case 0: Checking the print_sorted method/function is an instance method:
 >>> type(MyList.print_sorted)
 <class 'function'>
+
+
 ===============================================================================
 Case 1: Checking for Normal list
 >>> d_list = MyList([8, 5, 1])
 >>> d_list.print_sorted()
 [1, 5, 8]
 
+
 >>> d_list = MyList([1, 4, 2, 3, 5])
 >>> d_list.print_sorted()
 [1, 2, 3, 4, 5]
+
+
 ===============================================================================
 Case 2: Checking for if list is ordered
 >>> d_list = MyList([-9, 0, 2, 5, 10, 25, 123])
 >>> d_list.print_sorted()
 [-9, 0, 2, 5, 10, 25, 123]
+
+
 ===============================================================================
 Case 3: Checking for change in the original list
 >>> d_list = MyList([3, 23, -9, 1, -20, 234, 0, 9])
 >>> d_list.print_sorted()
 [-20, -9, 0, 1, 3, 9, 23, 234]
+
 >>> d_list
 [3, 23, -9, 1, -20, 234, 0, 9]
+
+
 ===============================================================================
 Case 4: Checking for sorting in negative integers list
 >>> d_list = MyList([-1050, -778, -8323905, 0, -924724394, -146])
 >>> d_list.print_sorted()
 [-924724394, -8323905, -1050, -778, -146, 0]
+
+
 ==============================================================================
 Case 5: Checking for correct type
 >>> d_list = MyList()
 >>> type(d_list) == MyList
 True
+
+
 ===============================================================================
 Case 6: Checking for correct instance test:
 >>> d_list = MyList()
 >>> isinstance(d_list, list)
 True
+
+
 ===============================================================================
 Case 7: Checking for missing positional argument
 >>> MyList.print_sorted(d_list)
 []
 
+
 >>> d_list.__class__.print_sorted()
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 TypeError: print_sorted() missing 1 required positional argument: 'self'
+
+
 ===============================================================================
 Case 8: Checking for more than 1 positional argument
 >>> d_list.print_sorted([3, 2, 4])
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 TypeError: print_sorted() takes 1 positional argument but 2 were given
+
+
 ===============================================================================
 Case 9: Checking for 2 positional arguments
 >>> d_list.print_sorted([3, 2, 4], 5)
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 TypeError: print_sorted() takes 1 positional argument but 3 were given
+
+
 ===============================================================================
 Case 10: Checking for Null and None Value
 >>> d_list.append(NULL)
@@ -78,26 +101,36 @@ Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 NameError: name 'NULL' is not defined
 
+
+
 >>> d_list.append(None)
 >>> d_list.print_sorted()
 [None]
+
+
 ===============================================================================
 Case 11: Checking for Empty list
 >>> d_list = MyList()
 >>> d_list.print_sorted()
 []
+
+
 ===============================================================================
 Case 12: Checking for working append function
 >>> d_list = MyList()
 >>> d_list.append(9)
 >>> d_list
 [9]
+
+
 ===============================================================================
 Case 13: Checking for infinite integer
 >>> d_list.append(int('inf'))
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 ValueError: invalid literal for int() with base 10: 'inf'
+
+
 ===============================================================================
 Case 14: Checking for repeated element
 >>> d_list = MyList()
@@ -109,6 +142,8 @@ Case 14: Checking for repeated element
 >>> d_list.append(7)
 >>> d_list.print_sorted()
 [-5, -5, 0, 7, 7, 9]
+
+
 ===============================================================================
 Case 15: Checking for similar elements
 >>> d_list.clear()
@@ -117,6 +152,8 @@ Case 15: Checking for similar elements
 >>> d_list.append(9)
 >>> d_list.print_sorted()
 [9, 9, 9]
+
+
 ===============================================================================
 case 16: parent object
 >>> d_list = [1, 2, 3]
