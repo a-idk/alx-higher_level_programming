@@ -3,7 +3,7 @@ The ``1-my_list`` module
 
 Usage: prints sorted lists
 ----------------------------------------
-This defines a function in python that prints the list, but sorted (ascending sort)
+This defines a function in Python that prints the list, but sorted (ascending sort)
 
 ==============================================================================
 importing the function
@@ -12,7 +12,7 @@ importing the function
 
 ===============================================================================
 Case 0: Checking the print_sorted method/function is an instance method:
->>> type(MyList.__dict__['print_sorted'])
+>>> type(MyList.print_sorted)
 <class 'function'>
 ===============================================================================
 Case 1: Checking for Normal list
@@ -52,21 +52,18 @@ Case 6: Checking for correct instance test:
 True
 ===============================================================================
 Case 7: Checking for missing positional argument
->>> MyList.print_sorted()
+>>> MyList.print_sorted(d_list)
 Traceback (most recent call last):
-...
 TypeError: print_sorted() missing 1 required positional argument: 'self'
 ===============================================================================
 Case 8: Checking for more than 1 positional argument
 >>> d_list.print_sorted([3, 2, 4])
 Traceback (most recent call last):
-...
 TypeError: print_sorted() takes 1 positional argument but 2 were given
 ===============================================================================
 Case 9: Checking for 2 positional arguments
 >>> d_list.print_sorted([3, 2, 4], 5)
 Traceback (most recent call last):
-...
 TypeError: print_sorted() takes 1 positional argument but 3 were given
 ===============================================================================
 Case 10: Checking for Empty list

@@ -10,6 +10,7 @@ class MyList(list):
     """
     Class myList definition
     """
+
     def print_sorted(self):
         """
         Method that prints the list, but sorted
