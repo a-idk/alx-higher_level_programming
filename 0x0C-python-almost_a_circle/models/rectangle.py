@@ -167,7 +167,7 @@ class Rectangle(Base):
                 elif flag == 4:
                     self.y = index
                 flag = flag + 1
-        """ for keyword arguments `kwargs`, Argument order is not important """
+            """ for keyword arguments `kwargs`, Argument order is not important """
         elif kwargs and len(kwargs) != 0:
             for key, val in kwargs.items():
                 if key == "id":

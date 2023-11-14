@@ -115,8 +115,8 @@ class TestBase(unittest.TestCase):
         data = [{"low": 983421}]
         self.assertEqual(Base.to_json_string(data), '[{"low": 983421}]')
         data = [{"low": 983421}, {"dar": 224}, {"ME": 0}]
-        self.assertEqual(Base.to_json_string(data), '[{"low": 983421},
-                         {"dar": 224}, {"ME": 0}]')
+        self.assertEqual(Base.to_json_string(data), '''[{"low": 983421},
+                     {"dar": 224}, {"ME": 0}]''')
         data = [{'x': 1, 'y': 2, 'width': 3, 'id': 4, 'height': 5},
                 {'x': 101, 'y': 20123, 'width': 312321, 'id': 656352,
                     'height': 34340}]

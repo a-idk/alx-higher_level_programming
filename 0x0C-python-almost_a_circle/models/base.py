@@ -5,14 +5,8 @@ Descriptiion: Write the first class Base. This class will be the “base”
         of all other classes in this project
 @a_idk scripting
 """
-import json
 import csv
-from os import path
-from models.rectangle import Rectangle
-from models.square import Square
-import turtle as tu
-import time
-from random import randrange
+import json
 
 
 class Base:
@@ -77,9 +71,9 @@ class Base:
         """
         if json_string is None:
             return []
-        if not json_string:
+        if json_string == "[]":
             return []
-        return loads(json_string)
+        return json.loads(json_string)
 
     @classmethod
     def create(cls, **dictionary):
@@ -89,6 +83,8 @@ class Base:
             cls: class object or filename
             dictionary: the dictionary
         """
+        from models.rectangle import Rectangle
+        from models.square import Square
         if cls is Square:
             new_shape = Square(1)
         elif cls is Rectangle:
@@ -105,6 +101,7 @@ class Base:
         Args:
             cls: class object or filename
         """
+        from os import path
         fd = "{}.json".format(cls.__name__)
         # checking if file exist
         if not path.isfile(fd):
@@ -119,12 +116,14 @@ class Base:
         """
         Method that loads object to csv file
         """
+        from models.square import Square
+        from models.rectangle import Rectangle
         filename = []
         with open('{}.csv'.format(cls.__name__), 'r', newline='',
-                  encoding='utf-8') as file:
-            csv_read = csv.reader(file)
+                  encoding='utf-8') as fd:
+            csv_read = csv.reader(fd)
             for rw in csv_read:
-                rw = [int(r) for r in rw]
+                rw = [int(rd) for rd in rw]
                 if cls is not Rectangle:
                     data = {"id": rw[0], "size": rw[1],
                             "x": rw[2], "y": rw[3]}
@@ -142,23 +141,28 @@ class Base:
             cls: class object
             list_objs: filename of the file to be written to
         """
+        from models.square import Square
+        from models.rectangle import Rectangle
         if list_objs is not None:
             if cls is Rectangle:
-                list_objs = [[o.id, o.width, o.height, o.x, o.y]
-                             for o in list_objs]
+                list_objs = [[i.id, i.width, i.height, i.x, i.y]
+                             for i in list_objs]
             else:
-                list_objs = [[o.id, o.size, o.x, o.y]
-                             for o in list_objs]
+                list_objs = [[i.id, i.size, i.x, i.y]
+                             for i in list_objs]
         with open('{}.csv'.format(cls.__name__), 'w', newline='',
-                  encoding='utf-8') as file:
+                  encoding='utf-8') as fd:
             # writer = csv.writer(f), writer.writerows(list_objs)
-            csv.writer(file).writerows(list_objs)
+            csv.writer(fd).writerows(list_objs)
 
     @staticmethod
     def draw(list_rectangles, list_squares):
         """
         Method that opens a window and draws all the Rectangles and Squares
         """
+        import turtle as tu
+        import time
+        from random import randrange
         tu.Screen().colormode(255)
         for idx in list_rectangles + list_squares:
             t = tu.Turtle()
