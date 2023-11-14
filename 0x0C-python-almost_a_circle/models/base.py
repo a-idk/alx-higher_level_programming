@@ -60,7 +60,7 @@ class Base:
                 for item in list_objs:
                     tmp.append(item.to_dictionary())
                 list_objs = tmp
-                jsf.write(Base.to_json_string(list_dicts))
+                jsf.write(Base.to_json_string(list_objs))
 
     @staticmethod
     def from_json_string(json_string):
