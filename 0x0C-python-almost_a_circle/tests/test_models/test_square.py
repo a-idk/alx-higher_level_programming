@@ -102,9 +102,9 @@ were given"
 
     def test_kwargs_instance(self):
         """ Testing for keyword instantiation """
-        shape = Square(100, id=421, y=99, x=101)
-        data = {'_Rectangle__height': 100, '_Rectangle__width': 100,
-                '_Rectangle__x': 101, '_Rectangle__y': 99, 'id': 421}
+        shape = Square(240, id=76, y=96, x=111)
+        data = {'_Rectangle__height': 240, '_Rectangle__width': 240,
+                '_Rectangle__x': 111, '_Rectangle__y': 96, 'id': 76}
         self.assertEqual(shape.__dict__, data)
 
     def test_F_properties(self):
