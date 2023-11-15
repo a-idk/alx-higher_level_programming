@@ -142,6 +142,7 @@ were given"
                 with self.assertRaises(TypeError) as err:
                     setattr(shape, attribute, invalid_type)
                 self.assertEqual(str(err.exception), stg)
+
         stg = "width must be an integer"
         for invalid_type in self.invalid_types():
             with self.assertRaises(TypeError) as err:

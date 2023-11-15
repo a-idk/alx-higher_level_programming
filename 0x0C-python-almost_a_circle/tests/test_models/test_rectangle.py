@@ -20,7 +20,6 @@ class TestRectangle(unittest.TestCase):
     def setUp(self):
         """ before every single test """
         Base._Base__nb_objects = 0
-        pass
 
     def tearDown(self):
         """ after every single test """
@@ -257,7 +256,7 @@ given"
         rect3 = Rectangle(8, 7, 0, 0, 12)
         self.assertEqual(rect3.area(), 56)
 
-    def test_J_display_no_args(self):
+    def test_display_no_args(self):
         """ Testing for display() method  """
         rect = Rectangle(9, 8)
         with self.assertRaises(TypeError) as err:

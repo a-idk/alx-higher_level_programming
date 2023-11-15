@@ -321,7 +321,7 @@ class TestBase(unittest.TestCase):
 
     def test_save_to_file_csv_one_rectangle(self):
         rect = Rectangle(10, 7, 2, 8, 5)
-        Rectangle.save_to_file_csv([r])
+        Rectangle.save_to_file_csv([read])
         with open("Rectangle.csv", "r") as file:
             self.assertTrue("5,10,7,2,8", file.read())
 
