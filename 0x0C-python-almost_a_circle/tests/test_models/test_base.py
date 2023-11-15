@@ -139,7 +139,7 @@ class TestBase(unittest.TestCase):
         rect2 = Rectangle(1, 2, 3, 4)
         rect3 = Rectangle(2, 3, 4, 5)
         dictionary = [rect1.to_dictionary(), rect2.to_dictionary(),
-                    rect3.to_dictionary()]
+                      rect3.to_dictionary()]
         json_dictionary = Base.to_json_string(dictionary)
         dictionary = str(dictionary)
         dictionary = dictionary.replace("'", '"')
@@ -156,7 +156,7 @@ class TestBase(unittest.TestCase):
         rect2 = Square(1, 2, 3)
         rect3 = Square(2, 3, 4)
         dictionary = [rect1.to_dictionary(), rect2.to_dictionary(),
-                rect3.to_dictionary()]
+                      rect3.to_dictionary()]
         json_dictionary = Base.to_json_string(dictionary)
         dictionary = str(dictionary)
         dictionary = dictionary.replace("'", '"')

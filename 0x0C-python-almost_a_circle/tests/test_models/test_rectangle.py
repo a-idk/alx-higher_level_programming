@@ -48,7 +48,7 @@ given"
             rect = Rectangle(1)
         stg = "__init__() missing 1 required positional argument: 'height'"
         self.assertEqual(str(err.exception), stg)
-        
+
     def test_class_rect(self):
         """ Testing the Rectangle class """
         self.assertEqual(str(Rectangle),
@@ -65,7 +65,7 @@ given"
                          "<class 'models.rectangle.Rectangle'>")
         self.assertTrue(isinstance(rect, Base))
         data = {'_Rectangle__height': 30, '_Rectangle__width': 15,
-             '_Rectangle__x': 0, '_Rectangle__y': 0, 'id': 1}
+                '_Rectangle__x': 0, '_Rectangle__y': 0, 'id': 1}
         self.assertDictEqual(rect.__dict__, data)
 
         with self.assertRaises(TypeError) as err:
@@ -122,19 +122,19 @@ given"
         """ Testing the positional instantiation """
         rect = Rectangle(5, 10, 15, 20)
         data = {'_Rectangle__height': 10, '_Rectangle__width': 5,
-             '_Rectangle__x': 15, '_Rectangle__y': 20, 'id': 1}
+                '_Rectangle__x': 15, '_Rectangle__y': 20, 'id': 1}
         self.assertEqual(rect.__dict__, data)
 
         rect = Rectangle(5, 10, 15, 20, 98)
         data = {'_Rectangle__height': 10, '_Rectangle__width': 5,
-             '_Rectangle__x': 15, '_Rectangle__y': 20, 'id': 98}
+                '_Rectangle__x': 15, '_Rectangle__y': 20, 'id': 98}
         self.assertEqual(rect.__dict__, data)
 
     def test_kwargs_instantiation(self):
         """Testing kwargs instantiation """
         rect = Rectangle(100, 200, id=421, y=99, x=101)
         data = {'_Rectangle__height': 200, '_Rectangle__width': 100,
-             '_Rectangle__x': 101, '_Rectangle__y': 99, 'id': 421}
+                '_Rectangle__x': 101, '_Rectangle__y': 99, 'id': 421}
         self.assertEqual(rect.__dict__, data)
 
     def test_id_inheritance(self):
@@ -151,7 +151,7 @@ given"
         rect.x = 102
         rect.y = 103
         data = {'_Rectangle__height': 101, '_Rectangle__width': 100,
-             '_Rectangle__x': 102, '_Rectangle__y': 103, 'id': 1}
+                '_Rectangle__x': 102, '_Rectangle__y': 103, 'id': 1}
         self.assertEqual(rect.__dict__, data)
         self.assertEqual(rect.width, 100)
         self.assertEqual(rect.height, 101)
@@ -161,7 +161,7 @@ given"
     def invalid_types(self):
         """ Returns tuple of types for validation """
         typ = (3.14, -1.1, float('inf'), float('-inf'), True, "str", (2,),
-             [4], {5}, {6: 7}, None)
+               [4], {5}, {6: 7}, None)
         return typ
 
     def test_type_validate(self):
@@ -558,6 +558,6 @@ given"
 """
         self.assertEqual(f.getvalue(), stg)
 
+
 if __name__ == "__main__":
     unittest.main()
-
