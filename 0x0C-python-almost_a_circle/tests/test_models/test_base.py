@@ -35,6 +35,17 @@ class TestBase(unittest.TestCase):
         self.assertEqual(str(type(bs)), "<class 'models.base.Base'>")
         self.assertEqual(bs.__dict__, {"id": 1})
 
+    def test_auto_increment_id(self):
+        """ Testing automatic ID assignment in Base class """
+        Base._Base__nb_objects = 0  # Ensure starting from a known state
+        obj1 = Base()
+        obj2 = Base()
+        obj3 = Base()
+
+        self.assertEqual(obj1.id, 1)
+        self.assertEqual(obj2.id, 2)
+        self.assertEqual(obj3.id, 3)
+
     def test_base_instances_share_nb_objects(self):
         """Test that Base instances share the same __nb_objects attribute"""
         bs1 = Base()
