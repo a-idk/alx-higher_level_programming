@@ -173,7 +173,7 @@ class Base:
             drw.pensize(1)
             drw.penup()
             drw.pendown()
-            drw.setpos((idx.x + t.pos()[0], idx.y - t.pos()[1]))
+            drw.setpos((idx.x + drw.pos()[0], idx.y - drw.pos()[1]))
             drw.pensize(10)
             drw.forward(idx.width)
             drw.lt(90)
