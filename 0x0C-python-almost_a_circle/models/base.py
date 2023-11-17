@@ -69,7 +69,7 @@ class Base:
         Args:
             json_string: JSON string
         """
-        if json_string is None:
+        if json_string is None or json_string == "":
             return []
         if json_string == "[]":
             return []
@@ -118,9 +118,12 @@ class Base:
         """
         from models.square import Square
         from models.rectangle import Rectangle
-        filename = []
-        with open('{}.csv'.format(cls.__name__), 'r', newline='',
-                  encoding='utf-8') as fd:
+        from os import path
+        filename = '{}.csv'.format(cls.__name__)
+        if not path.isfile(filename):
+            return []
+        obj = []
+        with open(filename, 'r', newline='', encoding='utf-8') as fd:
             csv_read = csv.reader(fd)
             for rw in csv_read:
                 rw = [int(rd) for rd in rw]
@@ -130,8 +133,8 @@ class Base:
                 else:
                     data = {"id": rw[0], "width": rw[1], "height": rw[2],
                             "x": rw[3], "y": rw[4]}
-                filename.append(cls.create(**data))
-        return filename
+                obj.append(cls.create(**data))
+        return obj
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
@@ -165,20 +168,20 @@ class Base:
         from random import randrange
         tu.Screen().colormode(255)
         for idx in list_rectangles + list_squares:
-            t = tu.Turtle()
-            t.color((randrange(255), randrange(255), randrange(255)))
-            t.pensize(1)
-            t.penup()
-            t.pendown()
-            t.setpos((idx.x + t.pos()[0], idx.y - t.pos()[1]))
-            t.pensize(10)
-            t.forward(idx.width)
-            t.left(90)
-            t.forward(idx.height)
-            t.left(90)
-            t.forward(idx.width)
-            t.left(90)
-            t.forward(idx.height)
-            t.left(90)
-            t.end_fill()
+            drw = tu.Turtle()
+            drw.color((randrange(255), randrange(255), randrange(255)))
+            drw.pensize(1)
+            drw.penup()
+            drw.pendown()
+            drw.setpos((idx.x + t.pos()[0], idx.y - t.pos()[1]))
+            drw.pensize(10)
+            drw.forward(idx.width)
+            drw.lt(90)
+            drw.forward(idx.height)
+            drw.lt(90)
+            drw.forward(idx.width)
+            drw.lt(90)
+            drw.forward(idx.height)
+            drw.lt(90)
+            drw.end_fill()
         time.sleep(5)

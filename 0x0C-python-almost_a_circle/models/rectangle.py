@@ -23,6 +23,20 @@ class Rectangle(Base):
             TypeError: If width||height||x||y is not integer
             ValueError: If width||height <= 0 or x||y < 0
         """
+        if width is None or height is None:
+            raise TypeError(
+                    """__init__() missing 1 or more required positional """
+                    """argument"""
+                    )
+        if not isinstance(width, int) or not isinstance(height, int):
+            raise TypeError("Width and height must be integers")
+        if width <= 0 or height <= 0:
+            raise ValueError("Width and height must be > 0")
+        if not isinstance(x, int) or not isinstance(y, int):
+            raise TypeError("X and Y must be integers")
+        if x < 0 or y < 0:
+            raise ValueError("X and Y must be >= 0")
+
         self.width = width
         self.height = height
         self.x = x

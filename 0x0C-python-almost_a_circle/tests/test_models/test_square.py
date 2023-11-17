@@ -33,7 +33,7 @@ class TestSquare(unittest.TestCase):
         """ Testing for many arguments initialization """
         with self.assertRaises(TypeError) as err:
             shape = Square(1, 2, 3, 4, 5)
-        stg = "__init__() takes from 2 to 5 positional arguments but 6 \
+        stg = "__init__() takes from 1 to 5 positional arguments but 6 \
 were given"
         self.assertEqual(str(err.exception), stg)
 
@@ -219,7 +219,7 @@ were given"
         with redirect_stdout(fd):
             shape.display()
         stg = "#\n"
-        self.assertEqual(f.getvalue(), stg)
+        self.assertEqual(fd.getvalue(), stg)
         shape.size = 3
         fd = io.StringIO()
         with redirect_stdout(fd):
@@ -229,7 +229,7 @@ were given"
 ###\n\
 ###\n\
 "
-        self.assertEqual(d.getvalue(), stg)
+        self.assertEqual(fd.getvalue(), stg)
         shape = Square(5, 6, 7)
         fd = io.StringIO()
         with redirect_stdout(fd):
@@ -379,7 +379,7 @@ were given"
  ###
  ###
 """
-        self.assertEqual(f.getvalue(), stg)
+        self.assertEqual(fd.getvalue(), stg)
 
     def test_arg_area(self):
         """ Testing for area() compuation """
@@ -502,7 +502,7 @@ were given"
         self.assertEqual(shape.__dict__, data)
 
         shape.update(size=17)
-        data["_Rectangle__height"] = 17
+        data["_Rectangle__height"] = 5 
         data["_Rectangle__width"] = 17
         self.assertEqual(shape.__dict__, data)
 

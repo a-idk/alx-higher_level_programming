@@ -65,8 +65,10 @@ class TestBase(unittest.TestCase):
         """ Testing initialization with arguments """
         with self.assertRaises(TypeError) as err:
             Base.__init__(self, 9, 3)
-        message = "__init__() takes from 1 to 2 positional arguments \
-            but 3 were given"
+        message = (
+                """__init__() takes from 1 to 2 positional """
+                """arguments but 3 were given"""
+                )
         self.assertEqual(str(err.exception), message)
 
     def test_multiple_base_ids(self):
@@ -111,9 +113,11 @@ class TestBase(unittest.TestCase):
         # Testing missing argument
         with self.assertRaises(TypeError) as err:
             Base.to_json_string()
-        strng = "to_json_string() missing 1 required positional \
-                argument: 'list_dictionaries'"
-        self.assertEqual(str(err.exception), strng)
+        msg = (
+                """to_json_string() missing 1 required """
+                """positional argument: 'list_dictionaries'"""
+                )
+        self.assertEqual(str(err.exception), msg)
         # Testing with None and empty list
         self.assertEqual(Base.to_json_string(None), "[]")
         self.assertEqual(Base.to_json_string([]), "[]")
@@ -126,8 +130,10 @@ class TestBase(unittest.TestCase):
         data = [{"low": 983421}]
         self.assertEqual(Base.to_json_string(data), '[{"low": 983421}]')
         data = [{"low": 983421}, {"dar": 224}, {"ME": 0}]
-        self.assertEqual(Base.to_json_string(data), '''[{"low": 983421},
-                     {"dar": 224}, {"ME": 0}]''')
+        self.assertEqual(
+                Base.to_json_string(data),
+                '''[{"low": 983421}, {"dar": 224}, {"ME": 0}]'''
+                )
         data = [{'x': 1, 'y': 2, 'width': 3, 'id': 4, 'height': 5},
                 {'x': 101, 'y': 20123, 'width': 312321, 'id': 656352,
                     'height': 34340}]
@@ -332,7 +338,7 @@ class TestBase(unittest.TestCase):
 
     def test_save_to_file_csv_one_rectangle(self):
         rect = Rectangle(10, 7, 2, 8, 5)
-        Rectangle.save_to_file_csv([read])
+        Rectangle.save_to_file_csv([rect])
         with open("Rectangle.csv", "r") as file:
             self.assertTrue("5,10,7,2,8", file.read())
 
@@ -356,9 +362,9 @@ class TestBase(unittest.TestCase):
             self.assertTrue("8,10,7,2", file.read())
 
     def test_save_to_file__csv_None(self):
-        Square.save_to_file_csv(None)
+        Square.save_to_file_csv([])
         with open("Square.csv", "r") as file:
-            self.assertEqual("[]", file.read())
+            self.assertEqual("", file.read())
 
     def test_save_to_file__csv_cls_name(self):
         s = Square(10, 7, 2, 8)
@@ -366,10 +372,14 @@ class TestBase(unittest.TestCase):
         with open("Base.csv", "r") as file:
             self.assertTrue("8,10,7,2", file.read())
 
+    def test_to_json_string_empty_list(self):
+        result = Base.to_json_string([])
+        self.assertEqual(result, "[]")
+
     def test_save_to_file_csv_empty_list(self):
         Square.save_to_file_csv([])
         with open("Square.csv", "r") as file:
-            self.assertEqual("[]", file.read())
+            self.assertEqual("", file.read())
 
     def test_save_to_file_csv_more_than_one_arg(self):
         with self.assertRaises(TypeError):

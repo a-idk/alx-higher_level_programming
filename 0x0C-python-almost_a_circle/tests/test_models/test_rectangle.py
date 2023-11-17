@@ -37,7 +37,7 @@ and 'height'"
         """Testing the class Rectangle initialization with args """
         with self.assertRaises(TypeError) as err:
             rect = Rectangle(2, 2, 8, 9, 5, 7)
-        stg = "__init__() takes from 3 to 6 positional arguments but 7 were \
+        stg = "__init__() takes from 1 to 6 positional arguments but 7 were \
 given"
         self.assertEqual(str(err.exception), stg)
 
@@ -275,14 +275,14 @@ given"
     def test_str(self):
         """ Testing for __str__() method return """
         rect = Rectangle(5, 2)
-        stg '[Rectangle] (1) 0/0 - 5/2'
-        self.assertEqual(str(r), stg)
+        stg = '[Rectangle] (1) 0/0 - 5/2'
+        self.assertEqual(str(rect), stg)
         rect = Rectangle(1, 1, 1)
-        stg '[Rectangle] (2) 1/0 - 1/1'
-        self.assertEqual(str(r), stg)
+        stg = '[Rectangle] (2) 1/0 - 1/1'
+        self.assertEqual(str(rect), stg)
         rect = Rectangle(3, 4, 5, 6)
-        stg '[Rectangle] (3) 5/6 - 3/4'
-        self.assertEqual(str(r), stg)
+        stg = '[Rectangle] (3) 5/6 - 3/4'
+        self.assertEqual(str(rect), stg)
 
         Base._Base__nb_objects = 0
         rect1 = Rectangle(4, 6, 2, 1, 12)
