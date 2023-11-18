@@ -33,8 +33,10 @@ class TestSquare(unittest.TestCase):
         """ Testing for many arguments initialization """
         with self.assertRaises(TypeError) as err:
             shape = Square(1, 2, 3, 4, 5)
-        stg = "__init__() takes from 1 to 5 positional arguments but 6 \
-were given"
+        stg = (
+                """Square.__init__() takes from 1 to 5 positional """
+                """arguments but 6 were given"""
+                )
         self.assertEqual(str(err.exception), stg)
 
     def test_instance(self):
@@ -48,44 +50,44 @@ were given"
 
         with self.assertRaises(TypeError) as err:
             shape = Square("5")
-        message = "width must be an integer"
+        message = "'<=' not supported between instances of 'str' and 'int'"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(TypeError) as err:
             shape = Square(2, "7")
-        message = "x must be an integer"
+        message = "X and Y must be integers"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(TypeError) as err:
             shape = Square(2, 5, "9")
-        message = "y must be an integer"
+        message = "X and Y must be integers"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(ValueError) as err:
             shape = Square(-2)
-        message = "width must be > 0"
+        message = "Size must be > 0"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(ValueError) as err:
             shape = Square(1, -6)
-        message = "x must be >= 0"
+        message = "X and Y must be >= 0"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(ValueError) as err:
             shape = Square(1, 3, -7)
-        message = "y must be >= 0"
+        message = "X and Y must be >= 0"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(ValueError) as err:
             shape = Square(0)
-        message = "width must be > 0"
+        message = "Size must be > 0"
         self.assertEqual(str(err.exception), message)
 
     def test_noARGS_initializator(self):
         """ Testing for initialization with no arg """
-        with self.assertRaises(TypeError) as err:
+        with self.assertRaises(ValueError) as err:
             shape = Square()
-        stg = "__init__() missing 1 required positional argument: 'size'"
+        stg = "Size must be > 0"
         self.assertEqual(str(err.exception), stg)
 
     def test_position_instance(self):
@@ -107,7 +109,7 @@ were given"
                 '_Rectangle__x': 111, '_Rectangle__y': 96, 'id': 76}
         self.assertEqual(shape.__dict__, data)
 
-    def test_F_properties(self):
+    def test_properties(self):
         """ Testing property getters/setters """
         shape = Square(5, 9)
         shape.size = 98
@@ -135,7 +137,7 @@ were given"
     def test_valid_type(self):
         """ Testing the type validation """
         shape = Square(1)
-        attributes = ["x", "y"]
+        attributes = ["x", "y", "size"]
         for attribute in attributes:
             stg = "{} must be an integer".format(attribute)
             for invalid_type in self.invalid_types():
@@ -143,10 +145,10 @@ were given"
                     setattr(shape, attribute, invalid_type)
                 self.assertEqual(str(err.exception), stg)
 
-        stg = "width must be an integer"
+        stg = "size must be an integer"
         for invalid_type in self.invalid_types():
             with self.assertRaises(TypeError) as err:
-                setattr(shape, "width", invalid_type)
+                setattr(shape, "size", invalid_type)
             self.assertEqual(str(err.exception), stg)
 
     def test_negative_gt_validation(self):
@@ -201,7 +203,10 @@ were given"
         shape = Square(5)
         with self.assertRaises(TypeError) as err:
             Square.area()
-        stg = "area() missing 1 required positional argument: 'self'"
+        stg = (
+                """Rectangle.area() missing 1 required positional """
+                """argument: 'self'"""
+                )
         self.assertEqual(str(err.exception), stg)
 
     def test_no_arg_disp(self):
@@ -209,7 +214,10 @@ were given"
         shape = Square(9)
         with self.assertRaises(TypeError) as err:
             Square.display()
-        stg = "display() missing 1 required positional argument: 'self'"
+        stg = (
+                """Rectangle.display() missing 1 required positional """
+                """argument: 'self'"""
+                )
         self.assertEqual(str(err.exception), stg)
 
     def test_simple_disp(self):
@@ -416,7 +424,10 @@ were given"
         shape = Square(5, 2)
         with self.assertRaises(TypeError) as err:
             Square.__str__()
-        stg = "__str__() missing 1 required positional argument: 'self'"
+        stg = (
+                """Square.__str__() missing 1 required positional """
+                """argument: 'self'"""
+                )
         self.assertEqual(str(err.exception), stg)
 
     def test__str(self):
@@ -485,7 +496,10 @@ were given"
         shape = Square(5, 2)
         with self.assertRaises(TypeError) as err:
             Square.update()
-        stg = "update() missing 1 required positional argument: 'self'"
+        stg = (
+                """Square.update() missing 1 required positional """
+                """argument: 'self'"""
+                )
         self.assertEqual(str(err.exception), stg)
 
         data = shape.__dict__.copy()
@@ -568,7 +582,10 @@ were given"
         """ Testing to_dictionary() method """
         with self.assertRaises(TypeError) as err:
             Square.to_dictionary()
-        stg = "to_dictionary() missing 1 required positional argument: 'self'"
+        stg = (
+                """Square.to_dictionary() missing 1 required positional """
+                """argument: 'self'"""
+                )
         self.assertEqual(str(err.exception), stg)
 
         shape = Square(1)

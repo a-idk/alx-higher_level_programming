@@ -29,9 +29,9 @@ class Rectangle(Base):
                     """argument"""
                     )
         if not isinstance(width, int) or not isinstance(height, int):
-            raise TypeError("Width and height must be integers")
+            raise TypeError("width and height must be integers")
         if width <= 0 or height <= 0:
-            raise ValueError("Width and height must be > 0")
+            raise ValueError("width and height must be > 0")
         if not isinstance(x, int) or not isinstance(y, int):
             raise TypeError("X and Y must be integers")
         if x < 0 or y < 0:

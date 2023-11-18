@@ -29,23 +29,30 @@ class TestRectangle(unittest.TestCase):
         """ Testing the class initialization """
         with self.assertRaises(TypeError) as err:
             rect = Rectangle()
-        stg = "__init__() missing 2 required positional arguments: 'width' \
-and 'height'"
+        stg = (
+                """Rectangle.__init__() missing 2 required positional """
+                """arguments: 'width' and 'height'"""
+                )
         self.assertEqual(str(err.exception), stg)
 
     def test_args_initialization(self):
         """Testing the class Rectangle initialization with args """
         with self.assertRaises(TypeError) as err:
             rect = Rectangle(2, 2, 8, 9, 5, 7)
-        stg = "__init__() takes from 1 to 6 positional arguments but 7 were \
-given"
+        stg = (
+                """Rectangle.__init__() takes from 3 to 6 positional """
+                """arguments but 7 were given"""
+                )
         self.assertEqual(str(err.exception), stg)
 
     def test_arg_initialization(self):
         """ Testing the class Rectangle initialization with 1 arg """
         with self.assertRaises(TypeError) as err:
             rect = Rectangle(1)
-        stg = "__init__() missing 1 required positional argument: 'height'"
+        stg = (
+                """Rectangle.__init__() missing 1 required positional """
+                """argument: 'height'"""
+                )
         self.assertEqual(str(err.exception), stg)
 
     def test_class_rect(self):
@@ -69,52 +76,52 @@ given"
 
         with self.assertRaises(TypeError) as err:
             rect = Rectangle("me", 2)
-        message = "width must be an integer"
+        message = "width and height must be integers"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(TypeError) as err:
             rect = Rectangle(1, "me")
-        message = "height must be an integer"
+        message = "width and height must be integers"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(TypeError) as err:
             rect = Rectangle(1, 2, "me")
-        message = "x must be an integer"
+        message = "X and Y must be integers"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(TypeError) as err:
             rect = Rectangle(1, 2, 3, "me")
-        message = "y must be an integer"
+        message = "X and Y must be integers"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(ValueError) as err:
             rect = Rectangle(-3, 2)
-        message = "width must be > 0"
+        message = "width and height must be > 0"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(ValueError) as err:
             rect = Rectangle(2, -3)
-        message = "height must be > 0"
+        message = "width and height must be > 0"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(ValueError) as err:
             rect = Rectangle(0, 4)
-        message = "width must be > 0"
+        message = "width and height must be > 0"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(ValueError) as err:
             rect = Rectangle(4, 0)
-        message = "height must be > 0"
+        message = "width and height must be > 0"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(ValueError) as err:
             rect = Rectangle(1, 3, -6)
-        message = "x must be >= 0"
+        message = "X and Y must be >= 0"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(ValueError) as err:
             rect = Rectangle(1, 2, 4, -6)
-        message = "y must be >= 0"
+        message = "X and Y must be >= 0"
         self.assertEqual(str(err.exception), message)
 
     def test_position_instantiation(self):
@@ -226,7 +233,10 @@ given"
         rect = Rectangle(5, 6)
         with self.assertRaises(TypeError) as err:
             Rectangle.area()
-        stg = "area() missing 1 required positional argument: 'self'"
+        stg = (
+                """Rectangle.area() missing 1 required """
+                """positional argument: 'self'"""
+                )
         self.assertEqual(str(err.exception), stg)
 
     def test_area(self):
@@ -261,7 +271,7 @@ given"
         rect = Rectangle(9, 8)
         with self.assertRaises(TypeError) as err:
             Rectangle.display()
-        stg = "display() missing 1 required positional argument: 'self'"
+        stg = "Rectangle.display() missing 1 required positional argument: 'self'"
         self.assertEqual(str(err.exception), stg)
 
     def test_str_no_args(self):
@@ -269,7 +279,10 @@ given"
         rect = Rectangle(5, 2)
         with self.assertRaises(TypeError) as err:
             Rectangle.__str__()
-        stg = "__str__() missing 1 required positional argument: 'self'"
+        stg = (
+                """Rectangle.__str__() missing 1 required positional """
+                """argument: 'self'"""
+                )
         self.assertEqual(str(err.exception), stg)
 
     def test_str(self):
@@ -296,7 +309,10 @@ given"
         rect = Rectangle(5, 2)
         with self.assertRaises(TypeError) as err:
             Rectangle.update()
-        stg = "update() missing 1 required positional argument: 'self'"
+        stg = (
+                """Rectangle.update() missing 1 required positional """
+                """argument: 'self'"""
+                )
         self.assertEqual(str(err.exception), stg)
 
         data = rect.__dict__.copy()
@@ -420,7 +436,10 @@ given"
         """ Testing for to_dictionary() method:"""
         with self.assertRaises(TypeError) as err:
             Rectangle.to_dictionary()
-        stg = "to_dictionary() missing 1 required positional argument: 'self'"
+        stg = (
+                """Rectangle.to_dictionary() missing 1 required """
+                """positional argument: 'self'"""
+                )
         self.assertEqual(str(err.exception), stg)
 
         rect = Rectangle(1, 2)

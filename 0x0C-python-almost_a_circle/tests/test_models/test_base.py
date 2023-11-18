@@ -58,7 +58,10 @@ class TestBase(unittest.TestCase):
         """ Testing for class initialization """
         with self.assertRaises(TypeError) as err:
             Base.__init__()
-        message = "__init__() missing 1 required positional argument: 'self'"
+        message = (
+                """Base.__init__() missing 1 required """
+                """positional argument: 'self'"""
+                )
         self.assertEqual(str(err.exception), message)
 
     def test_class_initialize_args(self):
@@ -66,7 +69,7 @@ class TestBase(unittest.TestCase):
         with self.assertRaises(TypeError) as err:
             Base.__init__(self, 9, 3)
         message = (
-                """__init__() takes from 1 to 2 positional """
+                """Base.__init__() takes from 1 to 2 positional """
                 """arguments but 3 were given"""
                 )
         self.assertEqual(str(err.exception), message)
@@ -114,7 +117,7 @@ class TestBase(unittest.TestCase):
         with self.assertRaises(TypeError) as err:
             Base.to_json_string()
         msg = (
-                """to_json_string() missing 1 required """
+                """Base.to_json_string() missing 1 required """
                 """positional argument: 'list_dictionaries'"""
                 )
         self.assertEqual(str(err.exception), msg)
@@ -183,8 +186,10 @@ class TestBase(unittest.TestCase):
         """ Testing the to_json_string() method """
         with self.assertRaises(TypeError) as err:
             Base.from_json_string()
-        strng = "from_json_string() missing 1 required positional argument: \
-'json_string'"
+        strng = (
+                """Base.from_json_string() missing 1 required """
+                """positional argument: 'json_string'"""
+                )
         self.assertEqual(str(err.exception), strng)
         self.assertEqual(Base.from_json_string(None), [])
         self.assertEqual(Base.from_json_string(""), [])
