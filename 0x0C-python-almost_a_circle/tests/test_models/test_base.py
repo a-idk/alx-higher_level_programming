@@ -19,7 +19,7 @@ class TestBase(unittest.TestCase):
     def setUp(self):
         """ before every single test """
         Base._Base__nb_objects = 0
-        pass
+ 
 
     def test_nb_objects_initialization(self):
         """ Testing for nb_objects initializing to zero """
@@ -37,7 +37,9 @@ class TestBase(unittest.TestCase):
 
     def test_auto_increment_id(self):
         """ Testing automatic ID assignment in Base class """
-        Base._Base__nb_objects = 0  # Ensure starting from a known state
+        # Base._Base__nb_objects = 0  # Ensure starting from a known state
+        self.assertEqual(getattr(Base, "_Base__nb_objects"), 0)
+
         obj1 = Base()
         obj2 = Base()
         obj3 = Base()
