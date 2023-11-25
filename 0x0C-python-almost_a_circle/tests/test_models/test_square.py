@@ -34,7 +34,7 @@ class TestSquare(unittest.TestCase):
         with self.assertRaises(TypeError) as err:
             shape = Square(1, 2, 3, 4, 5)
         stg = (
-                """Square.__init__() takes from 1 to 5 positional """
+                """__init__() takes from 1 to 5 positional """
                 """arguments but 6 were given"""
                 )
         self.assertEqual(str(err.exception), stg)
@@ -204,7 +204,7 @@ class TestSquare(unittest.TestCase):
         with self.assertRaises(TypeError) as err:
             Square.area()
         stg = (
-                """Rectangle.area() missing 1 required positional """
+                """area() missing 1 required positional """
                 """argument: 'self'"""
                 )
         self.assertEqual(str(err.exception), stg)
@@ -215,7 +215,7 @@ class TestSquare(unittest.TestCase):
         with self.assertRaises(TypeError) as err:
             Square.display()
         stg = (
-                """Rectangle.display() missing 1 required positional """
+                """display() missing 1 required positional """
                 """argument: 'self'"""
                 )
         self.assertEqual(str(err.exception), stg)
@@ -425,7 +425,7 @@ class TestSquare(unittest.TestCase):
         with self.assertRaises(TypeError) as err:
             Square.__str__()
         stg = (
-                """Square.__str__() missing 1 required positional """
+                """__str__() missing 1 required positional """
                 """argument: 'self'"""
                 )
         self.assertEqual(str(err.exception), stg)
@@ -497,7 +497,7 @@ class TestSquare(unittest.TestCase):
         with self.assertRaises(TypeError) as err:
             Square.update()
         stg = (
-                """Square.update() missing 1 required positional """
+                """update() missing 1 required positional """
                 """argument: 'self'"""
                 )
         self.assertEqual(str(err.exception), stg)
@@ -583,7 +583,7 @@ class TestSquare(unittest.TestCase):
         with self.assertRaises(TypeError) as err:
             Square.to_dictionary()
         stg = (
-                """Square.to_dictionary() missing 1 required positional """
+                """to_dictionary() missing 1 required positional """
                 """argument: 'self'"""
                 )
         self.assertEqual(str(err.exception), stg)

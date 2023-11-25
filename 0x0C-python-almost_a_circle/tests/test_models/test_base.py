@@ -59,7 +59,7 @@ class TestBase(unittest.TestCase):
         with self.assertRaises(TypeError) as err:
             Base.__init__()
         message = (
-                """Base.__init__() missing 1 required """
+                """__init__() missing 1 required """
                 """positional argument: 'self'"""
                 )
         self.assertEqual(str(err.exception), message)
@@ -69,7 +69,7 @@ class TestBase(unittest.TestCase):
         with self.assertRaises(TypeError) as err:
             Base.__init__(self, 9, 3)
         message = (
-                """Base.__init__() takes from 1 to 2 positional """
+                """__init__() takes from 1 to 2 positional """
                 """arguments but 3 were given"""
                 )
         self.assertEqual(str(err.exception), message)
@@ -117,7 +117,7 @@ class TestBase(unittest.TestCase):
         with self.assertRaises(TypeError) as err:
             Base.to_json_string()
         msg = (
-                """Base.to_json_string() missing 1 required """
+                """to_json_string() missing 1 required """
                 """positional argument: 'list_dictionaries'"""
                 )
         self.assertEqual(str(err.exception), msg)
@@ -187,7 +187,7 @@ class TestBase(unittest.TestCase):
         with self.assertRaises(TypeError) as err:
             Base.from_json_string()
         strng = (
-                """Base.from_json_string() missing 1 required """
+                """from_json_string() missing 1 required """
                 """positional argument: 'json_string'"""
                 )
         self.assertEqual(str(err.exception), strng)
