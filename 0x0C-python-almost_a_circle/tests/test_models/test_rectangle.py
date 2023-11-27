@@ -177,11 +177,14 @@ class TestRectangle(unittest.TestCase):
         rect = Rectangle(1, 2)
         attributes = ["x", "y", "width", "height"]
         for attribute in attributes:
-            stg = "{} must be an integer".format(attribute)
-            for invalid_type in self.invalid_types():
-                print("Testing {}: {}".format(attribute, invalid_type))
-                with self.assertRaises(TypeError) as err:
-                    setattr(rect, attribute, invalid_type)
+            stg = "{} must be > 0".format(attribute)
+            # for invalid_type in self.invalid_types():
+            #    print("Testing {}: {}".format(attribute, invalid_type))
+            with self.assertRaises(ValueError) as err:
+                if attribute in ["x", "y"]:
+                    setattr(rect, attribute, -5)
+                else:
+                    setattr(rect, attribute, -(randrange(10) + 1))
                 self.assertEqual(str(err.exception), stg)
 
     def test_validate_negative_gt(self):

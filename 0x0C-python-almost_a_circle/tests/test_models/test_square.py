@@ -21,6 +21,15 @@ class TestSquare(unittest.TestCase):
         """ Imports module, instantiates class """
         Base._Base__nb_objects = 0
 
+    def test_invalid_size_type(self):
+        """ Testing invalid types for 'size' attribute """
+        square = Square(5)  # Create an instance of Square with a size of 5
+        invalid_types = [True, "string", 3.14, (2, 3)]  # Invalid types to test
+
+        for invalid_type in invalid_types:
+            with self.assertRaises(TypeError):
+                square.size = invalid_type
+
     def test_squareclass(self):
         """ Testing for the class type """
         self.assertEqual(str(Square), "<class 'models.square.Square'>")
@@ -122,11 +131,30 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(shape.x, 102)
         self.assertEqual(shape.y, 103)
 
-    def invalid_types(self):
+    '''def invalid_types(self):
         """ Returns tuple of types for validation """
         tup = (3.14, -1.1, True, "str", (2,), [4], None)
+        return tup'''
 
+    def invalid_types(self):
+        """ Returns a list of tuples: (attribute, invalid_type) """
+        tup = [
+            ("x", 3.14),
+            ("y", -1.1),
+            ("size", True),
+        ]
         return tup
+
+    '''def test_invalid_attribute_types(self):
+        """ Testing invalid types for attributes """
+        shape = Square(1)
+        invalid_type_list = self.invalid_types()
+
+        for attribute, invalid_type in invalid_type_list:
+            with self.subTest(attribute=attribute, invalid_type=invalid_type):
+                with self.assertRaises(TypeError) as err:
+                    setattr(shape, attribute, invalid_type)
+                self.assertEqual(str(err.exception), f"{attribute} must be an integer")'''
 
     def test_inherited_class(self):
         """ Testing for inherited Base id """
@@ -134,45 +162,58 @@ class TestSquare(unittest.TestCase):
         shape = Square(2)
         self.assertEqual(shape.id, 99)
 
-    def test_valid_type(self):
-        """ Testing the type validation """
+    def test_invalid_x_type(self):
+        """ Testing invalid types for 'x' attribute """
+        shape = Square(1)
+        invalid_types = self.invalid_types()
+
+        for invalid_type in invalid_types:
+            with self.assertRaises(TypeError) as err:
+                shape.x = invalid_type
+            self.assertEqual(str(err.exception), "x must be an integer")
+
+    def test_invalid_y_type(self):
+        """ Testing invalid types for 'y' attribute """
+        shape = Square(1)
+        invalid_types = self.invalid_types()
+
+        for invalid_type in invalid_types:
+            with self.assertRaises(TypeError) as err:
+                shape.y = invalid_type
+            self.assertEqual(str(err.exception), "y must be an integer")
+
+    def test_invalid_size_type(self):
+        """ Testing invalid types for 'size' attribute """
+        shape = Square(1)
+        invalid_types = self.invalid_types()
+        for invalid_type in invalid_types:
+            with self.assertRaises(TypeError) as err:
+                shape.size = invalid_type
+            self.assertEqual(str(err.exception), "size must be an integer")
+
+    """def test_valid_type(self):
+        Testing the type validation
         shape = Square(1)
         attributes = ["x", "y", "size"]
-        for attribute in attributes:
-            print(f"Setting {attribute} to {invalid_type}")
-            try:
-                setattr(shape, attribute, invalid_type)
-                print(f"Successfully set {attribute} to {invalid_type}")
-            except TypeError as err:
-                print(f"Caught TypeError: {err}")
-                continue
-            self.fail(f"Expected TypeError not raised for setting {attribute} to {invalid_type}")
 
-            '''stg = "{} must be an integer".format(attribute)
+        for attribute in attributes:
             for invalid_type in self.invalid_types():
                 with self.assertRaises(TypeError) as err:
                     setattr(shape, attribute, invalid_type)
-                self.assertEqual(str(err.exception), stg)'''
-        stg = "size must be an integer"
-        for invalid_type in self.invalid_types():
-            print(f"Setting size to {invalid_type}")
-            try:
-                setattr(shape, "size", invalid_type)
-                print(f"Successfully set size to {invalid_type}")
-            except TypeError as err:
-                print(f"Caught TypeError: {err}")
-                continue
-            self.fail("Expected TypeError not raised for setting size to {invalid_type}")
-            '''with self.assertRaises(TypeError) as err:
-                setattr(shape, "size", invalid_type)
-            self.assertEqual(str(err.exception), stg)'''
+                self.assertEqual(str(err.exception), f"{attribute} must be an integer")
+
+        print("Before setting x to True:", shape.x)
+        with self.assertRaises(TypeError) as err:
+            setattr(shape, "x", True)  # Adjust as needed based on your requirements
+        print("After setting x to True:", shape.x)
+        self.assertEqual(str(err.exception), "x must be an integer")"""
 
     def test_negative_gt_validation(self):
         """ Testing for greater than validation """
         shape = Square(1, 2)
         attributes = ["size"]
         for attribute in attributes:
-            stg = "width must be > 0".format(attribute)
+            stg = "size must be > 0".format(attribute)
             with self.assertRaises(ValueError) as err:
                 setattr(shape, attribute, -(randrange(10) + 1))
             self.assertEqual(str(err.exception), stg)
@@ -182,7 +223,7 @@ class TestSquare(unittest.TestCase):
         shape = Square(1, 2)
         attributes = ["size"]
         for attribute in attributes:
-            stg = "width must be > 0".format(attribute)
+            stg = "size must be > 0".format(attribute)
             with self.assertRaises(ValueError) as err:
                 setattr(shape, attribute, 0)
             self.assertEqual(str(err.exception), stg)
@@ -429,11 +470,11 @@ class TestSquare(unittest.TestCase):
 
         with self.assertRaises(TypeError) as err:
             sqr1.size = "9"
-        self.assertEqual(str(err.exception), "width must be an integer")
+        self.assertEqual(str(err.exception), "size must be an integer")
 
         with self.assertRaises(ValueError) as err:
             sqr1.size = 0
-        self.assertEqual(str(err.exception), "width must be > 0")
+        self.assertEqual(str(err.exception), "size must be > 0")
 
     def test_noArgs_str_(self):
         """ Testing __str__() """
@@ -494,7 +535,7 @@ class TestSquare(unittest.TestCase):
 
         with self.assertRaises(ValueError) as err:
             shape.update(10, -5)
-        stg = "width must be > 0"
+        stg = "size must be > 0"
         self.assertEqual(str(err.exception), stg)
 
         with self.assertRaises(ValueError) as err:

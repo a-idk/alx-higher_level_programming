@@ -194,6 +194,10 @@ class Rectangle(Base):
                 elif key == "height":
                     self.height = val
                 elif key == "x":
+                    if val is not None and val < 0:
+                        raise ValueError("x must be >= 0")
                     self.x = val
                 elif key == "y":
+                    if val is not None and val < 0:
+                        raise ValueError("y must be >= 0")
                     self.y = val
