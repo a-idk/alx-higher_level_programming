@@ -76,52 +76,52 @@ class TestRectangle(unittest.TestCase):
 
         with self.assertRaises(TypeError) as err:
             rect = Rectangle("me", 2)
-        message = "width and height must be integers"
+        message = "width must be an integer"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(TypeError) as err:
             rect = Rectangle(1, "me")
-        message = "width and height must be integers"
+        message = "height must be an integer"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(TypeError) as err:
             rect = Rectangle(1, 2, "me")
-        message = "X and Y must be integers"
+        message = "x must be an integer"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(TypeError) as err:
             rect = Rectangle(1, 2, 3, "me")
-        message = "X and Y must be integers"
+        message = "y must be an integer"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(ValueError) as err:
             rect = Rectangle(-3, 2)
-        message = "width and height must be > 0"
+        message = "width must be > 0"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(ValueError) as err:
             rect = Rectangle(2, -3)
-        message = "width and height must be > 0"
+        message = "height must be > 0"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(ValueError) as err:
             rect = Rectangle(0, 4)
-        message = "width and height must be > 0"
+        message = "width must be > 0"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(ValueError) as err:
             rect = Rectangle(4, 0)
-        message = "width and height must be > 0"
+        message = "height must be > 0"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(ValueError) as err:
             rect = Rectangle(1, 3, -6)
-        message = "X and Y must be >= 0"
+        message = "x must be >= 0"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(ValueError) as err:
             rect = Rectangle(1, 2, 4, -6)
-        message = "X and Y must be >= 0"
+        message = "y must be >= 0"
         self.assertEqual(str(err.exception), message)
 
     def test_position_instantiation(self):

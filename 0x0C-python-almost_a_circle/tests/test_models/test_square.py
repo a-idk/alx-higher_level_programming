@@ -64,12 +64,12 @@ class TestSquare(unittest.TestCase):
 
         with self.assertRaises(TypeError) as err:
             shape = Square(2, "7")
-        message = "X and Y must be integers"
+        message = "x must be an integer"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(TypeError) as err:
             shape = Square(2, 5, "9")
-        message = "X and Y must be integers"
+        message = "y must be an integer"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(ValueError) as err:
@@ -79,12 +79,12 @@ class TestSquare(unittest.TestCase):
 
         with self.assertRaises(ValueError) as err:
             shape = Square(1, -6)
-        message = "X and Y must be >= 0"
+        message = "x must be >= 0"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(ValueError) as err:
             shape = Square(1, 3, -7)
-        message = "X and Y must be >= 0"
+        message = "y must be >= 0"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(ValueError) as err:
