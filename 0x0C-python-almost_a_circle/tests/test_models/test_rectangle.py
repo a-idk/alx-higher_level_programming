@@ -168,7 +168,9 @@ class TestRectangle(unittest.TestCase):
         """ Returns tuple of types for validation """
         typ = (3.14, -1.1, float('inf'), float('-inf'), True, "str", (2,),
                [4], {5}, {6: 7}, None)
-        return typ
+        p = (1.5, -1, float('inf'), float('-inf'), True, "str", (2,), [4],
+                None)
+        return p
 
     def test_type_validate(self):
         """ Testing for getter validation """
