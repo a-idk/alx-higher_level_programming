@@ -28,14 +28,26 @@ class Rectangle(Base):
                     """__init__() missing 1 or more required positional """
                     """argument"""
                     )
-        if not isinstance(width, int) or not isinstance(height, int):
+        if not isinstance(width, int):
+            raise TypeError("width must be an integer")
+        if not isinstance(height, int):
+            raise TypeError("height must be an integer")
+        if width <= 0:
+            raise ValueError("width must be > 0")
+        if height <= 0:
+            raise ValueError("height must be > 0")
+        if not isinstance(x, int):
+            raise TypeError("x must be an integer")
+        if not isinstance(y, int):
+            raise TypeError("y must be an integer")
+        '''if not isinstance(width, int) or not isinstance(height, int):
             raise TypeError("width and height must be integers")
         if width <= 0 or height <= 0:
             raise ValueError("width and height must be > 0")
         if not isinstance(x, int) or not isinstance(y, int):
             raise TypeError("X and Y must be integers")
         if x < 0 or y < 0:
-            raise ValueError("X and Y must be >= 0")
+            raise ValueError("X and Y must be >= 0")'''
 
         self.width = width
         self.height = height
@@ -194,6 +206,10 @@ class Rectangle(Base):
                 elif key == "height":
                     self.height = val
                 elif key == "x":
+                    if val is not None and val < 0:
+                        raise ValueError("x must be >= 0")
                     self.x = val
                 elif key == "y":
+                    if val is not None and val < 0:
+                        raise ValueError("y must be >= 0")
                     self.y = val

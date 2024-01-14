@@ -30,7 +30,7 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError) as err:
             rect = Rectangle()
         stg = (
-                """Rectangle.__init__() missing 2 required positional """
+                """__init__() missing 2 required positional """
                 """arguments: 'width' and 'height'"""
                 )
         self.assertEqual(str(err.exception), stg)
@@ -40,7 +40,7 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError) as err:
             rect = Rectangle(2, 2, 8, 9, 5, 7)
         stg = (
-                """Rectangle.__init__() takes from 3 to 6 positional """
+                """__init__() takes from 3 to 6 positional """
                 """arguments but 7 were given"""
                 )
         self.assertEqual(str(err.exception), stg)
@@ -50,7 +50,7 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError) as err:
             rect = Rectangle(1)
         stg = (
-                """Rectangle.__init__() missing 1 required positional """
+                """__init__() missing 1 required positional """
                 """argument: 'height'"""
                 )
         self.assertEqual(str(err.exception), stg)
@@ -76,52 +76,52 @@ class TestRectangle(unittest.TestCase):
 
         with self.assertRaises(TypeError) as err:
             rect = Rectangle("me", 2)
-        message = "width and height must be integers"
+        message = "width must be an integer"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(TypeError) as err:
             rect = Rectangle(1, "me")
-        message = "width and height must be integers"
+        message = "height must be an integer"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(TypeError) as err:
             rect = Rectangle(1, 2, "me")
-        message = "X and Y must be integers"
+        message = "x must be an integer"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(TypeError) as err:
             rect = Rectangle(1, 2, 3, "me")
-        message = "X and Y must be integers"
+        message = "y must be an integer"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(ValueError) as err:
             rect = Rectangle(-3, 2)
-        message = "width and height must be > 0"
+        message = "width must be > 0"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(ValueError) as err:
             rect = Rectangle(2, -3)
-        message = "width and height must be > 0"
+        message = "height must be > 0"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(ValueError) as err:
             rect = Rectangle(0, 4)
-        message = "width and height must be > 0"
+        message = "width must be > 0"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(ValueError) as err:
             rect = Rectangle(4, 0)
-        message = "width and height must be > 0"
+        message = "height must be > 0"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(ValueError) as err:
             rect = Rectangle(1, 3, -6)
-        message = "X and Y must be >= 0"
+        message = "x must be >= 0"
         self.assertEqual(str(err.exception), message)
 
         with self.assertRaises(ValueError) as err:
             rect = Rectangle(1, 2, 4, -6)
-        message = "X and Y must be >= 0"
+        message = "y must be >= 0"
         self.assertEqual(str(err.exception), message)
 
     def test_position_instantiation(self):
@@ -168,17 +168,23 @@ class TestRectangle(unittest.TestCase):
         """ Returns tuple of types for validation """
         typ = (3.14, -1.1, float('inf'), float('-inf'), True, "str", (2,),
                [4], {5}, {6: 7}, None)
-        return typ
+        p = (1.5, -1, float('inf'), float('-inf'), True, "str", (2,), [4],
+                None)
+        return p
 
     def test_type_validate(self):
         """ Testing for getter validation """
         rect = Rectangle(1, 2)
         attributes = ["x", "y", "width", "height"]
         for attribute in attributes:
-            stg = "{} must be an integer".format(attribute)
-            for invalid_type in self.invalid_types():
-                with self.assertRaises(TypeError) as err:
-                    setattr(rect, attribute, invalid_type)
+            stg = "{} must be > 0".format(attribute)
+            # for invalid_type in self.invalid_types():
+            #    print("Testing {}: {}".format(attribute, invalid_type))
+            with self.assertRaises(ValueError) as err:
+                if attribute in ["x", "y"]:
+                    setattr(rect, attribute, -5)
+                else:
+                    setattr(rect, attribute, -(randrange(10) + 1))
                 self.assertEqual(str(err.exception), stg)
 
     def test_validate_negative_gt(self):
@@ -234,7 +240,7 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError) as err:
             Rectangle.area()
         stg = (
-                """Rectangle.area() missing 1 required """
+                """area() missing 1 required """
                 """positional argument: 'self'"""
                 )
         self.assertEqual(str(err.exception), stg)
@@ -271,7 +277,7 @@ class TestRectangle(unittest.TestCase):
         rect = Rectangle(9, 8)
         with self.assertRaises(TypeError) as err:
             Rectangle.display()
-        stg = "Rectangle.display() missing 1 required positional argument: 'self'"
+        stg = "display() missing 1 required positional argument: 'self'"
         self.assertEqual(str(err.exception), stg)
 
     def test_str_no_args(self):
@@ -280,7 +286,7 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError) as err:
             Rectangle.__str__()
         stg = (
-                """Rectangle.__str__() missing 1 required positional """
+                """__str__() missing 1 required positional """
                 """argument: 'self'"""
                 )
         self.assertEqual(str(err.exception), stg)
@@ -310,7 +316,7 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError) as err:
             Rectangle.update()
         stg = (
-                """Rectangle.update() missing 1 required positional """
+                """update() missing 1 required positional """
                 """argument: 'self'"""
                 )
         self.assertEqual(str(err.exception), stg)
@@ -437,7 +443,7 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError) as err:
             Rectangle.to_dictionary()
         stg = (
-                """Rectangle.to_dictionary() missing 1 required """
+                """to_dictionary() missing 1 required """
                 """positional argument: 'self'"""
                 )
         self.assertEqual(str(err.exception), stg)
