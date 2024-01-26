@@ -7,7 +7,7 @@ def find_peak(list_of_integers):
     """
     find a peak Module
     """
-    if ((len(list_of_integers) == 0) or (not list_of_integers)):
+    if (len(list_of_integers) == 0 or (not list_of_integers)):
         return None
 
     if list_of_integers:
