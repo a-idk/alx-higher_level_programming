@@ -19,13 +19,15 @@ if __name__ == "__main__":
             .format(sys.argv[1], sys.argv[2], sys.argv[3]),
             pool_pre_ping=True
             )
+    Base.metadata.create_all(engine)
 
     session = sessionmaker(bind=engine)()
 
     # seen = False
     new_obj = State(name='Louisiana')
     session.add(new_obj)
-    print(new_obj.id)
+    obj = session.query(State).filter_by(name='Louisiana').first()
+    print(obj.id)
     session.commit()
 
     session.close()

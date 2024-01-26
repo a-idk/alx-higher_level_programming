@@ -30,5 +30,4 @@ if __name__ == "__main__":
             print(city.id, city.name, sep=": ", end="")
             print(" -> " + state_obj.name)
 
-
     session.close()

@@ -31,5 +31,4 @@ if __name__ == "__main__":
             print("    ", end="")
             print(city.id, city.name, sep=": ")
 
-
     session.close()

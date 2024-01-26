@@ -34,5 +34,4 @@ if __name__ == "__main__":
     """
     session.commit()  # saves/persists changes
 
-
     session.close()
