@@ -1,6 +1,8 @@
 #!/usr/bin/python3
-# Title: Find a peak
-# Description: Write a fxn that finds a peak in list of unsorted integers
+"""
+Title: Find a peak
+Description: Write a fxn that finds a peak in list of unsorted integers
+"""
 
 
 def find_peak(list_of_integers):
