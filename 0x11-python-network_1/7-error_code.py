@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 Title: Error code (requests)
-Description: A script that takes in a URL and displays the body of the response.
+Description: A script that takes in a URL and displays the body of the response
     Also gives error code if http encounters error.
 Author: @a_idk
 """
